@@ -1,10 +1,15 @@
 import React from 'react';
 
+import Header from './Header';
+
 function App() {
   return (
-    <div className="App">
-      Hello Hero
-    </div>
+    <>
+      <Header title="Semana Omnistack" />
+      <Header>
+        Semana Children
+      </Header>
+    </>
   );
 }
 
