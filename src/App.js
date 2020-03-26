@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Header from './Header';
+import Logon from './pages/Logon';
 
 function App() {
   let [counter, setCounter] = useState(0);
@@ -11,10 +11,7 @@ function App() {
   }
   return (
     <>
-      <Header title="Semana Omnistack" />
-      <Header>
-        Contador: {counter}
-      </Header>
+      <Logon/>
 
       <button onClick={increment}>Incrementar</button>
     </>
