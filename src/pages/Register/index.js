@@ -10,15 +10,25 @@ import logoImg from '../../assets/logo.svg';
 export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [whatsApp, setWhatsApp] = useState('');
+  const [whatsapp, setWhatsapp] = useState();
   const [city, setCity] = useState('');
   const [uf, setUf] = useState('');
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    console.table({
-      name, email, whatsApp, city, uf,
-    })
+    const data = {
+      name, email, whatsapp, city, uf,
+    }
+
+    try {
+      const response = await api.post('ongs', data);
+
+      const { id } = response.data;
+
+      alert(`Seu ID de acesso: ${id}`);
+    } catch (err) {
+      alert('Erro no cadastro');
+    }
   }
 
   return (
@@ -50,9 +60,9 @@ export default function Register() {
             type="email" placeholder="E-mail"
           />
           <input 
-            value={whatsApp}
-            onChange={e => setWhatsApp(e.target.value)}
-            placeholder="WhatsApp"
+            value={whatsapp}
+            onChange={e => setWhatsapp(e.target.value)}
+            placeholder="Whatsapp"
           />
 
           <div className="input-group">
