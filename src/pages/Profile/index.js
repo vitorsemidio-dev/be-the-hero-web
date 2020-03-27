@@ -37,7 +37,7 @@ export default function Profile() {
           <p>R$100,00</p>
 
           <button type="button">
-            <FiTrash2 size={20} color="#a8a8a3" />
+            <FiTrash2 size={20}/>
           </button>
         </li>
         
@@ -53,7 +53,7 @@ export default function Profile() {
           <p>R$100,00</p>
 
           <button type="button">
-            <FiTrash2 size={20} color="#a8a8a3" />
+            <FiTrash2 size={20}/>
           </button>
         </li>
         
@@ -69,7 +69,7 @@ export default function Profile() {
           <p>R$100,00</p>
 
           <button type="button">
-            <FiTrash2 size={20} color="#a8a8a3" />
+            <FiTrash2 size={20}/>
           </button>
         </li>
         
@@ -85,7 +85,7 @@ export default function Profile() {
           <p>R$100,00</p>
 
           <button type="button">
-            <FiTrash2 size={20} color="#a8a8a3" />
+            <FiTrash2 size={20}/>
           </button>
         </li>
         
