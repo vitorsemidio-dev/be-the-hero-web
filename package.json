@@ -33,5 +33,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "nw": "^0.45.1",
+    "nw-builder": "^3.5.7"
   }
 }
