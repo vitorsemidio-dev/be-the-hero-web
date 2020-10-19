@@ -1,9 +1,11 @@
+/** @format */
+
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
 import api from '../../services/api';
-import './styles.css'
+import './styles.css';
 
 import logoImg from '../../assets/logo.svg';
 
@@ -19,8 +21,12 @@ export default function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     const data = {
-      name, email, whatsapp, city, uf,
-    }
+      name,
+      email,
+      whatsapp,
+      city,
+      uf,
+    };
 
     try {
       const response = await api.post('ongs', data);
@@ -33,60 +39,73 @@ export default function Register() {
     } catch (err) {
       alert('Erro no cadastro');
     }
-  }
+  };
 
   return (
-    <div className="register-container">
-      <div className="content">
+    <div className='register-container'>
+      <div className='content'>
         <section>
-          <img src={logoImg} alt="Be The Hero Logo"/>
+          <img src={logoImg} alt='Be The Hero Logo' />
 
           <h1>Cadastro</h1>
 
-          <p>Faça seu cadastro, entre na plataforma e ajude pessoas a encontrarem casos da sua ONG.</p>
+          <p>
+            Faça seu cadastro, entre na plataforma e ajude pessoas a encontrarem
+            casos da sua ONG.
+          </p>
 
-          <Link className="back-link" to="/">
-            <FiArrowLeft size={16} color="#E02041"/>
+          <Link className='back-link' to='/'>
+            <FiArrowLeft size={16} color='#E02041' />
             Voltar para Logon
           </Link>
         </section>
 
-
         <form>
-          <input 
+          <input
             value={name}
-            onChange={e => setName(e.target.value)}
-            placeholder="Nome da ONG"
+            onChange={(e) => setName(e.target.value)}
+            placeholder='Nome da ONG'
+            data-cy='name'
           />
-          <input 
+          <input
             value={email}
-            onChange={e => setEmail(e.target.value)}
-            type="email" placeholder="E-mail"
+            onChange={(e) => setEmail(e.target.value)}
+            type='email'
+            placeholder='E-mail'
+            data-cy='email'
           />
-          <input 
+          <input
             value={whatsapp}
-            onChange={e => setWhatsapp(e.target.value)}
-            placeholder="Whatsapp"
+            onChange={(e) => setWhatsapp(e.target.value)}
+            placeholder='Whatsapp'
+            data-cy='whatsapp'
           />
 
-          <div className="input-group">
+          <div className='input-group'>
             <input
               value={city}
-              onChange={e => setCity(e.target.value)}
-              placeholder="Cidade"
+              onChange={(e) => setCity(e.target.value)}
+              placeholder='Cidade'
+              data-cy='city'
             />
             <input
               value={uf}
-              onChange={e => setUf(e.target.value)}
-              placeholder="UF" style={{ width: 80 }}
+              onChange={(e) => setUf(e.target.value)}
+              placeholder='UF'
+              style={{ width: 80 }}
+              data-cy='uf'
             />
           </div>
 
-          <button onClick={handleRegister} type="submit" className="button">
+          <button
+            onClick={handleRegister}
+            type='submit'
+            className='button'
+            data-cy='submit'>
             Cadastrar
           </button>
         </form>
       </div>
     </div>
-  )
+  );
 }
