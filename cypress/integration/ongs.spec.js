@@ -23,6 +23,8 @@ describe('Ongs', () => {
 
     cy.wait('@postOng').then((xhr) => {
       expect(xhr.status).be.eq(200);
+      expect(xhr.response.body).has.property('id');
+      expect(xhr.response.body.id).is.not.null;
     });
   });
 
