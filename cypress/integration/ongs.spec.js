@@ -30,7 +30,7 @@ describe('Ongs', () => {
 
   it('Deve poder realizar login', () => {
     cy.visit('http://localhost:3000/');
-    cy.get('input').type('meuid');
+    cy.get('input').type(Cypress.env('createdOngId'));
     cy.get('.button').click();
   });
 });
