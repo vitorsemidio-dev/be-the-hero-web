@@ -29,6 +29,8 @@ describe('Ongs', () => {
   });
 
   it('Deve poder realizar login', () => {
-    //
+    cy.visit('http://localhost:3000/');
+    cy.get('input').type('meuid');
+    cy.get('.button').click();
   });
 });
