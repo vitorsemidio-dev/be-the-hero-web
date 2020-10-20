@@ -3,10 +3,6 @@
 const el = require('./elements').ELEMENTS;
 
 class NewIncident {
-  acessarNovoIncidente() {
-    cy.get('[data-cy=new-incident]').click();
-  }
-
   preencherCadastro() {
     cy.get(el.inputTitleIncident).type('Animal abandonado');
     cy.get(el.inputDescriptionIncident).type(

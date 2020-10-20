@@ -27,7 +27,7 @@ describe('Ongs', () => {
 
   it('devem poder cadastrar novos casos', () => {
     cy.login();
-    NewIncident.acessarNovoIncidente();
+    Profile.clicarNoBotaoCadastrarNovoIncidente();
     NewIncident.preencherCadastro();
     NewIncident.validarCadastroDeIncidenteComSucesso();
   });
