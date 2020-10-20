@@ -3,10 +3,12 @@
 /// <reference types="cypress" />
 
 import Logon from '../support/Pages/Logon';
+import NewIncident from '../support/Pages/NewIncident';
 import Register from '../support/Pages/Register';
+import Profile from '../support/Pages/Profile';
 
 describe('Ongs', () => {
-  it.only('Deve poder realizar cadastro', () => {
+  it('Deve poder realizar cadastro', () => {
     Register.acessarCadastro();
     Register.preencherCadastro();
     Register.validarCadastroDeOngsComSucesso();
@@ -20,29 +22,14 @@ describe('Ongs', () => {
   it('devem poder fazer logout', () => {
     cy.login();
 
-    cy.get('[data-cy=btn-logout]').click();
+    Profile.clicarNoBotaoLogout();
   });
 
   it('devem poder cadastrar novos casos', () => {
     cy.login();
-
-    cy.get('[data-cy=new-incident]').click();
-
-    cy.get('[data-cy=incident-title]').type('Animal abandonado');
-    cy.get('[data-cy=incident-description]').type(
-      'Animal precisa de apoio para ter onde morar',
-    );
-    cy.get('[data-cy=incident-value]').type(200);
-
-    cy.route('POST', '**/incidents').as('newIncident');
-
-    cy.get('[data-cy=btn-incident]').click();
-
-    cy.wait('@newIncident').then((xhr) => {
-      expect(xhr.status).to.eq(200);
-      expect(xhr.response.body).has.property('id');
-      expect(xhr.response.body.id).is.not.null;
-    });
+    NewIncident.acessarNovoIncidente();
+    NewIncident.preencherCadastro();
+    NewIncident.validarCadastroDeIncidenteComSucesso();
   });
 
   it('devem poder excluir um caso', () => {
