@@ -27,7 +27,9 @@ describe('Ongs', () => {
 
   it('devem poder cadastrar novos casos', () => {
     cy.login();
+
     Profile.clicarNoBotaoCadastrarNovoIncidente();
+
     NewIncident.preencherCadastro();
     NewIncident.validarCadastroDeIncidenteComSucesso();
   });
@@ -36,13 +38,7 @@ describe('Ongs', () => {
     cy.createNewIncident();
     cy.login();
 
-    cy.route('DELETE', '**/incidents/*').as('deleteIncident');
-
-    cy.get('[data-cy=btn-delete]').click();
-
-    cy.wait('@deleteIncident').then((xhr) => {
-      expect(xhr.status).to.eq(204);
-      expect(xhr.response.body).to.be.empty;
-    });
+    Profile.excluirIncidente();
+    Profile.validarExclusaoIncidente();
   });
 });
