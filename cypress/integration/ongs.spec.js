@@ -3,7 +3,7 @@
 /// <reference types="cypress" />
 
 describe('Ongs', () => {
-  it('Deve poder realizar cadastro', () => {
+  it.skip('Deve poder realizar cadastro', () => {
     // Visitar página
     cy.visit('http://localhost:3000/register');
 
@@ -28,9 +28,17 @@ describe('Ongs', () => {
     });
   });
 
-  it('Deve poder realizar login', () => {
+  it.skip('Deve poder realizar login', () => {
     cy.visit('http://localhost:3000/');
     cy.get('input').type(Cypress.env('createdOngId'));
     cy.get('.button').click();
+  });
+
+  it('devem poder fazer logout', () => {
+    cy.visit('http://localhost:3000/');
+    cy.get('input').type(Cypress.env('createdOngId'));
+    cy.get('[data-cy=btn-login]').click();
+
+    cy.get('[data-cy=btn-logout]').click();
   });
 });

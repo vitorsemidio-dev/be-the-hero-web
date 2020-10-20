@@ -1,3 +1,5 @@
+/** @format */
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -25,21 +27,21 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('createOng', () => {
-    cy.request({
-      method: 'POST',
-      url: 'http://localhost:3333/ongs',
-      body {
-        name: 'Dogs queridos',
-        email: 'dogs@email.com',
-        whatsapp: '21999999999',
-        city: 'Rio de Janeiro',
-        uf: 'RJ',
-      }
-    }).then(respone => {
-      expect(response.body.id).is.not.null;
+  cy.request({
+    method: 'POST',
+    url: 'http://localhost:3333/ongs',
+    body: {
+      name: 'Dogs queridos',
+      email: 'dogs@email.com',
+      whatsapp: '21999999999',
+      city: 'Rio de Janeiro',
+      uf: 'RJ',
+    },
+  }).then((response) => {
+    expect(response.body.id).is.not.null;
 
-      cy.log(response.body.id);
+    cy.log(response.body.id);
 
-      Cypress.env('createdOngId', response.body.id);
-    });
-})
+    Cypress.env('createdOngId', response.body.id);
+  });
+});

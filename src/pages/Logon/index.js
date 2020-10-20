@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiLogIn } from 'react-icons/fi';
@@ -14,12 +16,12 @@ export default function Logon() {
 
   const history = useHistory();
 
-  const handleLogin = async e => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
       const response = await api.post('sessions', { id });
-      
+
       localStorage.setItem('ongId', id);
       localStorage.setItem('ongName', response.data.name);
 
@@ -27,37 +29,37 @@ export default function Logon() {
     } catch (err) {
       alert('Falha no login, tente novamente');
     }
-  }
+  };
 
   return (
-    <div className="logon-container">
-      <section className="form">
-        <img src={logoImg} alt="Logo"/>
+    <div className='logon-container'>
+      <section className='form'>
+        <img src={logoImg} alt='Logo' />
 
-        <form action="">
+        <form action=''>
           <h1>Faça seu logon</h1>
-          
+
           <input
             value={id}
-            onChange={e => setId(e.target.value)}
-            placeholder="Sua ID"
+            onChange={(e) => setId(e.target.value)}
+            placeholder='Sua ID'
           />
-          <button 
+          <button
             onClick={handleLogin}
-            className="button"
-            type="submit">
-              Entrar
+            className='button'
+            type='submit'
+            data-cy='btn-login'>
+            Entrar
           </button>
 
-          <Link className="back-link" to="/register">
-            <FiLogIn size={16} color="#E02041"/>
+          <Link className='back-link' to='/register'>
+            <FiLogIn size={16} color='#E02041' />
             Não tenho cadastro
           </Link>
         </form>
-
       </section>
 
-      <img src={heroesImg} alt="Heroes"/>
+      <img src={heroesImg} alt='Heroes' />
     </div>
-  )
+  );
 }
