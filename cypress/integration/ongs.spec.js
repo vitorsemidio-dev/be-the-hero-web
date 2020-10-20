@@ -35,9 +35,12 @@ describe('Ongs', () => {
   });
 
   it('devem poder fazer logout', () => {
-    cy.visit('http://localhost:3000/');
-    cy.get('input').type(Cypress.env('createdOngId'));
-    cy.get('[data-cy=btn-login]').click();
+    cy.visit('http://localhost:3000/profile', {
+      onBeforeLoad: (browser) => {
+        browser.localStorage.setItem('ongId', Cypress.env('createdOngId'));
+        browser.localStorage.setItem('ongName', 'Gatos queridos');
+      },
+    });
 
     cy.get('[data-cy=btn-logout]').click();
   });
