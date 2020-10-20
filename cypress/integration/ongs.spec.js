@@ -3,7 +3,7 @@
 /// <reference types="cypress" />
 
 describe('Ongs', () => {
-  it.skip('Deve poder realizar cadastro', () => {
+  it('Deve poder realizar cadastro', () => {
     // Visitar página
     cy.visit('http://localhost:3000/register');
 
@@ -28,19 +28,19 @@ describe('Ongs', () => {
     });
   });
 
-  it.skip('Deve poder realizar login', () => {
+  it('Deve poder realizar login', () => {
     cy.visit('http://localhost:3000/');
     cy.get('input').type(Cypress.env('createdOngId'));
     cy.get('.button').click();
   });
 
-  it.skip('devem poder fazer logout', () => {
+  it('devem poder fazer logout', () => {
     cy.login();
 
     cy.get('[data-cy=btn-logout]').click();
   });
 
-  it.skip('devem poder cadastrar novos casos', () => {
+  it('devem poder cadastrar novos casos', () => {
     cy.login();
 
     cy.get('[data-cy=new-incident]').click();
@@ -65,6 +65,14 @@ describe('Ongs', () => {
   it('devem poder excluir um caso', () => {
     cy.createNewIncident();
     cy.login();
-    // cy.get('li > button > svg');
+
+    cy.route('DELETE', '**/incidents/*').as('deleteIncident');
+
+    cy.get('li > button > svg').click();
+
+    cy.wait('@deleteIncident').then((xhr) => {
+      expect(xhr.status).to.eq(204);
+      expect(xhr.response.body).to.be.empty;
+    });
   });
 });
