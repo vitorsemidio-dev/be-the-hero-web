@@ -40,7 +40,7 @@ describe('Ongs', () => {
     cy.get('[data-cy=btn-logout]').click();
   });
 
-  it('devem poder cadastrar novos casos', () => {
+  it.skip('devem poder cadastrar novos casos', () => {
     cy.login();
 
     cy.get('[data-cy=new-incident]').click();
@@ -60,5 +60,11 @@ describe('Ongs', () => {
       expect(xhr.response.body).has.property('id');
       expect(xhr.response.body.id).is.not.null;
     });
+  });
+
+  it('devem poder excluir um caso', () => {
+    cy.createNewIncident();
+    cy.login();
+    // cy.get('li > button > svg');
   });
 });
