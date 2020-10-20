@@ -34,14 +34,31 @@ describe('Ongs', () => {
     cy.get('.button').click();
   });
 
-  it('devem poder fazer logout', () => {
-    cy.visit('http://localhost:3000/profile', {
-      onBeforeLoad: (browser) => {
-        browser.localStorage.setItem('ongId', Cypress.env('createdOngId'));
-        browser.localStorage.setItem('ongName', 'Gatos queridos');
-      },
-    });
+  it.skip('devem poder fazer logout', () => {
+    cy.login();
 
     cy.get('[data-cy=btn-logout]').click();
+  });
+
+  it('devem poder cadastrar novos casos', () => {
+    cy.login();
+
+    cy.get('[data-cy=new-incident]').click();
+
+    cy.get('[data-cy=incident-title]').type('Animal abandonado');
+    cy.get('[data-cy=incident-description]').type(
+      'Animal precisa de apoio para ter onde morar',
+    );
+    cy.get('[data-cy=incident-value]').type(200);
+
+    cy.route('POST', '**/incidents').as('newIncident');
+
+    cy.get('[data-cy=btn-incident]').click();
+
+    cy.wait('@newIncident').then((xhr) => {
+      expect(xhr.status).to.eq(200);
+      expect(xhr.response.body).has.property('id');
+      expect(xhr.response.body.id).is.not.null;
+    });
   });
 });

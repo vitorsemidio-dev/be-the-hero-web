@@ -54,7 +54,7 @@ export default function Profile() {
         <img src={logoImg} alt='Be The Hero' />
         <span>Bem vindo, {ongName}</span>
 
-        <Link className='button' to='/incidents/new'>
+        <Link className='button' to='/incidents/new' data-cy='new-incident'>
           Cadastrar Novo Caso
         </Link>
 
