@@ -84,7 +84,8 @@ export default function Profile() {
 
             <button
               onClick={() => handleDeleteIncident(incident.id)}
-              type='button'>
+              type='button'
+              data-cy='btn-delete'>
               <FiTrash2 size={20} />
             </button>
           </li>

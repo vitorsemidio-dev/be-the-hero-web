@@ -30,8 +30,8 @@ describe('Ongs', () => {
 
   it('Deve poder realizar login', () => {
     cy.visit('http://localhost:3000/');
-    cy.get('input').type(Cypress.env('createdOngId'));
-    cy.get('.button').click();
+    cy.get('[data-cy=input-login]').type(Cypress.env('createdOngId'));
+    cy.get('[data-cy=btn-login]').click();
   });
 
   it('devem poder fazer logout', () => {
@@ -68,7 +68,7 @@ describe('Ongs', () => {
 
     cy.route('DELETE', '**/incidents/*').as('deleteIncident');
 
-    cy.get('li > button > svg').click();
+    cy.get('[data-cy=btn-delete]').click();
 
     cy.wait('@deleteIncident').then((xhr) => {
       expect(xhr.status).to.eq(204);

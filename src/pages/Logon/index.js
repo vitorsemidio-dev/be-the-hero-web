@@ -43,6 +43,7 @@ export default function Logon() {
             value={id}
             onChange={(e) => setId(e.target.value)}
             placeholder='Sua ID'
+            data-cy='input-login'
           />
           <button
             onClick={handleLogin}
