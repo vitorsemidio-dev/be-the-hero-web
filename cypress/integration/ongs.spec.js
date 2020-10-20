@@ -2,6 +2,8 @@
 
 /// <reference types="cypress" />
 
+import Logon from '../support/Pages/Logon';
+
 describe('Ongs', () => {
   it('Deve poder realizar cadastro', () => {
     // Visitar página
@@ -28,10 +30,9 @@ describe('Ongs', () => {
     });
   });
 
-  it('Deve poder realizar login', () => {
-    cy.visit('http://localhost:3000/');
-    cy.get('[data-cy=input-login]').type(Cypress.env('createdOngId'));
-    cy.get('[data-cy=btn-login]').click();
+  it.only('Deve poder realizar login', () => {
+    Logon.acessarLogin();
+    Logon.preencherLogin();
   });
 
   it('devem poder fazer logout', () => {
