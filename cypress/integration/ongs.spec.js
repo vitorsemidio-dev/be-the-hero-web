@@ -30,7 +30,7 @@ describe('Ongs', () => {
     });
   });
 
-  it.only('Deve poder realizar login', () => {
+  it('Deve poder realizar login', () => {
     Logon.acessarLogin();
     Logon.preencherLogin();
   });

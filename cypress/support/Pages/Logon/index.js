@@ -1,13 +1,15 @@
 /** @format */
 
+const el = require('./elements').ELEMENTS;
+
 class Logon {
   acessarLogin() {
     cy.visit('http://localhost:3000/');
   }
 
   preencherLogin() {
-    cy.get('[data-cy=input-login]').type(Cypress.env('createdOngId'));
-    cy.get('[data-cy=btn-login]').click();
+    cy.get(el.inputLogin).type(Cypress.env('createdOngId'));
+    cy.get(el.buttonLogin).click();
   }
 }
 
